@@ -1,0 +1,41 @@
+extends layout
+
+block content
+    h1= title
+    p #{title}
+
+    - var i = 0
+    ul
+        while events[i]
+            li= events[i++]
+
+    p Add event :
+    form#formAddEvent(name="addevent",method="post",action="/calendar/addevent")
+        p Date :
+            input#inputEventDate(type="text", placeholder="date", name="date")
+        p Intervenant :
+            input#inputUserFirstName(type="text", placeholder="firstname", name="firstname")
+            input#inputUserLastName(type="text", placeholder="lastname", name="lastname")
+        p Nom de l'évènement :
+            input#inputEventName(type="text", placeholder="eventname", name="eventname")
+        p Adresse de l'évènement :
+            input#inputEventAdress(type="text", placeholder="adress", name="adress")
+        p Fichiers liés à l'évènement :
+            input#inputEventFiles(type="array", placeholder="files", name="files")
+        p Ajouter :
+            button#btnSubmit(type="submit") submit
+
+    p Find events for a special user :
+    form#formFindEventsForUser(name="user",method="post",action="/calendar/user")
+        p Intervenant :
+            input#inputUserToFindFirstName(type="text", placeholder="firstnametofind", name="firstnametofind")
+            input#inputUserToFindLastName(type="text", placeholder="lastnametofind", name="lastnametofind")
+        p Trouver :
+            button#btnSubmit(type="submit") submit
+
+    p Find events for a special date :
+    form#formFindEventsForUser(name="date",method="post",action="/calendar/date")
+        p Date :
+            input#inputDateToFind(type="text", placeholder="datetofind", name="datetofind")
+        p Trouver :
+            button#btnSubmit(type="submit") submit

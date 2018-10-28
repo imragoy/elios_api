@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form#formLogin(name="login",method="post",action="/login/login")
+    input#inputUserEmail(type="text", placeholder="email", name="email")
+    input#inputUserPassword(type="password", placeholder="password", name="password")
+    button#btnSubmit(type="submit") submit
+  

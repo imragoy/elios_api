@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1= title
+    p #{title}
+
+    p Recherche : 
+        form#formSearchFile(name="searchfile",method="post",action="/files/search")
+            input#inputFileResearch(type="text", placeholder="filename", name="filename")
+            button#btnSubmit(type="submit") Rechercher
+
+    - var i = 0
+    ul
+        while files[i]
+            li= files[i++]

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    h1= title
+    p #{title}
+
+    - var i = 0
+    ul
+        while users[i]
+            li= users[i++]
+
+    p Add user :
+    form#formAddUser(name="adduser",method="post",action="/users/adduser")
+        p Email : 
+            input#inputUserEmail(type="text", placeholder="email", name="email")
+        p Mot de passe : 
+            input#inputUserPassword(type="password", placeholder="password", name="password")
+        p Admin : 
+            input#inputUserAdmin(type="checkbox", placeholder="admin", name="admin")
+        p Prénom : 
+            input#inputUserFirstName(type="text", placeholder="firstname", name="firstname")
+        p Nom : 
+            input#inputUserLastName(type="text", placeholder="lastname", name="lastname")
+        p Ajouter : 
+            button#btnSubmit(type="submit") submit
+
+    p Delete user :
+    form#formAddUser(name="deleteuser",method="post",action="/users/deleteuser")
+        input#inputUserEmail(type="text", placeholder="email", name="email")
+        button#btnSubmit(type="submit") submit
